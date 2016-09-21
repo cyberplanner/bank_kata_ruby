@@ -32,5 +32,9 @@ describe Transaction do
     expect(subject.current_debit).to eq(0)
   end
 
+  it 'can set the current_debit' do
+    transaction.set_current_debit(20)
+    expect(transaction.current_debit).to eq(20)
+  end
 
 end

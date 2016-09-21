@@ -9,8 +9,8 @@ class Transaction
   def initialize(amount = 0, current_balance = 0)
     @date = Time.new.strftime("%d/%m/%Y")
     @amount = amount
-    @current_balance = current_balance
     @current_debit = 0
+    @current_balance = current_balance
   end
 
   def set_amount(num)
@@ -22,6 +22,7 @@ class Transaction
   end
 
   def set_current_debit(num)
-    @debit = num
+    @current_debit = num
   end
+
 end
