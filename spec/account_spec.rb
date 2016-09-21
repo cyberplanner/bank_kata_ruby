@@ -21,4 +21,11 @@ describe Account do
     account.withdraw(5)
     expect(account.balance).to eq(5)
   end
+
+  it 'can provide debit if balance is in minus' do
+    account.deposit(10)
+    account.withdraw(15)
+    expect(account.debit).to eq(5)
+  end
+
 end
