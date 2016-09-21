@@ -5,10 +5,10 @@ class Transaction
   attr_reader :amount
   attr_reader :current_balance
 
-  def initialize
+  def initialize(amount = 0, current_balance = 0)
     @date = Time.new.strftime("%d/%m/%Y")
-    @amount = 0
-    @current_balance = 0
+    @amount = amount
+    @current_balance = current_balance
   end
 
   def set_amount(num)

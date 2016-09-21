@@ -1,7 +1,7 @@
 require 'transaction'
 
 describe Transaction do
-  let(:transaction) { Transaction.new }
+  let(:transaction) { Transaction.new(0, 0) }
 
   it "has a date" do
     allow(transaction).to receive(:date) { "20/09/2016" }
