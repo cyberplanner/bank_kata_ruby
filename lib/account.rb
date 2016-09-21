@@ -2,15 +2,17 @@ require 'transaction'
 
 class Account
   attr_reader :balance
-  attr_reader :transfers
+  attr_reader :transactions
   def initialize
     @balance = 0
-    @transfers = []
+    @transactions = []
   end
 
   def deposit(num)
     @balance += num
-
+    transaction = Transaction.new(num, @balance)
+    
+    @transactions << transaction
   end
 
   def withdraw(num)

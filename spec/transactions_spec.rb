@@ -5,7 +5,6 @@ describe Transaction do
 
   it "has a date" do
     allow(transaction).to receive(:date) { "20/09/2016" }
-    # transfer.stub(:date).and_return("20/09/2016")
     expect(transaction.date).to eq "20/09/2016"
   end
 
@@ -27,6 +26,10 @@ describe Transaction do
   it 'sets a current balance' do
     transaction.set_current_balance(20)
     expect(transaction.current_balance).to eq(20)
+  end
+
+  it 'initially has zero debit' do
+    expect(subject.current_debit).to eq(0)
   end
 
 
