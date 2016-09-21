@@ -1,4 +1,4 @@
-require 'transfer'
+require 'transaction'
 
 class Account
   attr_reader :balance
@@ -10,6 +10,7 @@ class Account
 
   def deposit(num)
     @balance += num
+    
   end
 
   def withdraw(num)
