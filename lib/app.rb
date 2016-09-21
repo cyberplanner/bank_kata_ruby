@@ -1,36 +1,59 @@
-require 'account'
-require 'transaction'
-def account
-  @account.Account.new
-end
-def make_deposit(num)
-  @account = Account.new
+#!/usr/bin/env ruby
+require_relative 'account'
+require 'rainbow'
 
+# def deposit(num)
+#   @account.deposit(num)
+# end
+#
+# def withdraw
+
+def termination
+  puts Rainbow("The program is now terminated! Good bye!").yellow.bright
+  exit
+end
+
+def print_menu
+  puts ""
+  puts "Welcome to Your Bank"
+  puts "1. " + Rainbow("View balance").underline.bright
+  puts "2. " + Rainbow("View transactions").underline.bright
+  puts "3. " + Rainbow("Deposit").underline.bright
+  puts "4. " + Rainbow("Withdraw").underline.bright
+  puts "9. " + Rainbow("Exit").red.underline.bright
 end
 
 def interactive_menu
-  @account
+  @account = Account.new
+  loop do
+    print_menu
+    process(gets.chomp)
+  end
+end
 
-  puts "Hello to Your Bank"
-  puts "To view balance: 1"
-  puts "To view transactions: 2"
-  puts "To deposit money: 3"
-  puts "To withdraw money: 4"
-
-  selection = gets.chomp
-
+def process(selection)
   case selection
   when "1"
-    "Your account balance is £#{@account.balance}"
+    puts "Your account balance is £#{@account.balance}"
   when "2"
-
+    puts "date || credit || debit || balance"
+    @account.transactions.each do |trans|
+      puts "#{trans.date} || #{trans.amount} || #{trans.current_debit} || #{trans.current_balance}"
+    end
   when "3"
-
+    puts "How much would you like to deposit: "
+    input = gets.chomp.to_i
+    @account.deposit(input)
+    puts "Thanks! £#{input} were added to your balance. current balance: £#{@account.balance}"
   when "4"
+    puts "How much would you like to withdraw: "
+    input = gets.chomp.to_i
+    @account.withdraw(input)
+    puts "Thanks! £#{input} were deducted from your balance. current balance: £#{@account.balance}"
 
+  when "9"
+    termination
   end
-  # 1. print the menu and ask the user what to do
-  # 2. read the input and save it into a variable
-  # 3. do what the user has asked
-  # 4. repeat from step 1
 end
+
+interactive_menu

@@ -32,7 +32,7 @@ describe Account do
     expect(account.transactions).to eq([])
   end
 
-  it 'keeps track of transfers' do
+  it 'keeps track of deposits' do
     account.deposit(10)
     expect(account.transactions.count).to eq(1)
     expect(account.transactions.first.date).to eq("21/09/2016")
@@ -41,13 +41,29 @@ describe Account do
     expect(account.transactions.first.current_debit).to eq(0)
   end
 
-  it 'keeps track of transfers' do
+  it 'keeps track of withdrawals' do
     account.withdraw(10)
     expect(account.transactions.count).to eq(1)
     expect(account.transactions.first.date).to eq("21/09/2016")
     expect(account.transactions.first.amount).to eq(10)
     expect(account.transactions.first.current_balance).to eq(-10)
     expect(account.transactions.first.current_debit).to eq(10)
+  end
+
+  it 'keeps track of transactions' do
+    account.deposit(10)
+    account.withdraw(15)
+    expect(account.transactions.count).to eq(2)
+
+    expect(account.transactions[0].date).to eq("21/09/2016")
+    expect(account.transactions[0].amount).to eq(10)
+    expect(account.transactions[0].current_balance).to eq(10)
+    expect(account.transactions[0].current_debit).to eq(0)
+
+    expect(account.transactions[1].date).to eq("21/09/2016")
+    expect(account.transactions[1].amount).to eq(15)
+    expect(account.transactions[1].current_balance).to eq(-5)
+    expect(account.transactions[1].current_debit).to eq(5)
   end
 
 end

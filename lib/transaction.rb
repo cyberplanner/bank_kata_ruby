@@ -1,4 +1,4 @@
-require 'account'
+
 
 class Transaction
   attr_reader :date
