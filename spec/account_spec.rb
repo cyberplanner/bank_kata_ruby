@@ -28,4 +28,8 @@ describe Account do
     expect(account.debit).to eq(5)
   end
 
+  it 'keeps track of transfers' do
+    expect(account.transfers).to eq([])
+  end
+
 end

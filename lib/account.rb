@@ -1,8 +1,11 @@
+require 'transfer'
+
 class Account
   attr_reader :balance
-
+  attr_reader :transfers
   def initialize
     @balance = 0
+    @transfers = []
   end
 
   def deposit(num)
@@ -20,5 +23,5 @@ class Account
     end
     debit
   end
-  
+
 end
