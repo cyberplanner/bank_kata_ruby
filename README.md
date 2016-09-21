@@ -5,6 +5,7 @@
  - run `bundle`
  - `cd` into the app
  - run `./lib/app.rb`
+ - .... .
  - profit?
 
  Made by Sal
